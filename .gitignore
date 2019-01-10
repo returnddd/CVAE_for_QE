@@ -1,0 +1,12 @@
+*.csv
+*.npy
+*.out
+*.png
+*.svg
+*.swp
+*.h5
+__pycache__/
+models/
+pics/
+results/
+gif/
