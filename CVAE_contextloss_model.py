@@ -42,7 +42,7 @@ class CVAE_contextloss(CVAE_type2):
             self.weight_adv = tf.Variable(1.0, tf.float32)
             self.g_loss = self.g_loss + self.weight_adv*self._create_adversarial_loss(logit_gen) # adversarial loss
 
-            self.g_loss = self.g_loss + self._create_adversarial_loss(logit_gen) # adversarial loss
+            #self.g_loss = self.g_loss + self._create_adversarial_loss(logit_gen) # adversarial loss
             self.g_train_op = self._create_train_op(self.g_loss, scope_cvae)
 
         # get tensors for testing
