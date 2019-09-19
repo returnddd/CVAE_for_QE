@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 
 class AcquisitionFunc_gpu(object):
-    def __init__(self, sess, pred_shape, patch_size, num_row, num_col, scale_L=1.0, device="/gpu:0"):
+    def __init__(self, sess, pred_shape, patch_size, num_row, num_col, scale_L=1.0):
         self.pred_shape = pred_shape # (num_pred, height,width,depth)
         self.patch_size = patch_size
         self.num_row, self.num_col = num_row, num_col
@@ -12,8 +12,9 @@ class AcquisitionFunc_gpu(object):
         self.D = self.patch_size * self.patch_size
         self.NXp1 = num_row * num_col
 
-        with tf.variable_scope("acq"):
-            self.build_graph()
+        with tf.device(device):
+            with tf.variable_scope("acq"):
+                self.build_graph()
 
         self.X = [(row,col) for row in range(num_row) for col in range(num_col)]
         self.num_X = len(self.X)
