@@ -30,12 +30,10 @@ def conv(name, x, filter_size, out_filters, strides, dilations=None):
     else:
         dilations = _stride(dilations) 
     with tf.variable_scope(name):
-        #n = filter_size[0] * filter_size[1] * out_filters
         kernel = tf.get_variable(
                 'DW', [filter_size[0], filter_size[1], x.get_shape()[3], out_filters],
                 tf.float32,
-                #initializer=tf.random_normal_initializer(stddev=np.sqrt(2.0/n)))
-                initializer=tf.contrib.layers.variance_scaling_initializer())
+                initializer=tf.variance_scaling_initializer(scale=2.0))
     return tf.nn.conv2d(x, kernel, strides, padding='SAME', dilations=dilations)
 
 def conv_unit(name, x, filter_size, out_filters, strides, do_batch_norm=True, is_training=True, activ_func=None ):
