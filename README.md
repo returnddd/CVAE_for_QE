@@ -4,6 +4,7 @@ Implementation of the paper "Efficiently measuring a quantum device using machin
 Paper link
 - https://www.nature.com/articles/s41534-019-0193-4
 - https://arxiv.org/abs/1810.10042 (arXiv version)
+- https://ml4physicalsciences.github.io/files/NeurIPS_ML4PS_2019_114.pdf (Neurips 2019 workshop version)
 
 
 ![with_acquisition_map](https://github.com/returnddd/CVAE_for_QE/blob/master/docs/with_acquisition_map.gif)
